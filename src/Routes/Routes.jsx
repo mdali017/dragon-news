@@ -13,9 +13,14 @@ import News from "../Pages/News/News/News";
       path: "/",
       element: <Main></Main>,
       children: [
+        // {
+        //     path: '/',
+        //     element: <Home></Home>
+        // },
         {
             path: '/',
-            element: <Home></Home>
+            element: <Category></Category>,
+            loader: () => fetch('http://localhost:3000/news')
         },
         {
           path: '/category/:id',
