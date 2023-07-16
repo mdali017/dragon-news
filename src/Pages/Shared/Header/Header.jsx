@@ -6,6 +6,7 @@ import Marquee from "react-fast-marquee";
 import NavBar from '../../../components/Navber/NavBar';
 
 const Header = () => {
+    
     return (
         <Container>
             <div className='text-center mt-5'>
