@@ -6,7 +6,16 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
 
 const NavBar = () => {
-    const {user} = useContext(AuthContext);
+    const {user, logOut} = useContext(AuthContext);
+
+    const handleLogOut = () =>{
+        logOut()
+        .then( () =>{})
+        .catch(err =>{
+            console.log(err)
+        })
+    }
+
     return (
         <>
             <Navbar collapseOnSelect expand="lg" className="">
@@ -16,7 +25,7 @@ const NavBar = () => {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mx-auto">
                             
-                                <Link to='/' className='text-decoration-none me-2 text-secondary'>Home</Link>
+                                <Link to='/category/0' className='text-decoration-none me-2 text-secondary'>Home</Link>
                                 <Link to='/' className='text-decoration-none me-2 text-secondary'>About</Link>
                                 <Link to='/' className='text-decoration-none text-secondary'>Career</Link>
                            
@@ -25,7 +34,7 @@ const NavBar = () => {
                         </Nav>
                         <Nav>
                             {user && <Nav.Link href="#deets"><FaUserCircle className='fs-1'></FaUserCircle></Nav.Link>}
-                            {user ? <Button variant="dark">Log Out</Button> : <Link to='/login'><Button variant="dark">Log In</Button></Link>}
+                            {user ? <Button onClick={handleLogOut} variant="dark">Log Out</Button> : <Link to='/login'><Button variant="dark">Log In</Button></Link>}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
